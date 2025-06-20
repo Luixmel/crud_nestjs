@@ -1,4 +1,11 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateTaskDto } from './create-task.dto';
+import { IsOptional, IsString, Length } from 'class-validator';
 
-export class UpdateTaskDto extends PartialType(CreateTaskDto) {}
+export class UpdateTaskDto {
+  @IsOptional()
+  @IsString()
+  @Length(3, 20)
+  title?: string;
+  @IsString()
+  @IsOptional()
+  description?: string;
+}
